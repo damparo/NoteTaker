@@ -65,12 +65,14 @@ var handleNoteSave = function() {
 // Delete the clicked note
 var handleNoteDelete = function(event) {
   // prevents the click listener for the list from being called when the button inside of it is clicked
+  // console.log("click delete");
   event.stopPropagation();
 
   var note = $(this)
     .parent(".list-group-item")
     .data();
-
+  console.log(note.id);
+  console.log(activeNote.id);
   if (activeNote.id === note.id) {
     activeNote = {};
   }
@@ -84,6 +86,7 @@ var handleNoteDelete = function(event) {
 // Sets the activeNote and displays it
 var handleNoteView = function() {
   activeNote = $(this).data();
+  // console.log(activeNote);
   renderActiveNote();
 };
 
@@ -135,7 +138,7 @@ var getAndRenderNotes = function() {
 $saveNoteBtn.on("click", handleNoteSave);
 $noteList.on("click", ".list-group-item", handleNoteView);
 $newNoteBtn.on("click", handleNewNoteView);
-$noteList.on("click", ".delete-note", handleNoteDelete);
+$noteList.on("click", ".delete-note", handleNoteView, handleNoteDelete);
 $noteTitle.on("keyup", handleRenderSaveBtn);
 $noteText.on("keyup", handleRenderSaveBtn);
 

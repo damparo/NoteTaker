@@ -1,15 +1,21 @@
 const express = require("express");
 const app = express();
+const path = require("path");
 const PORT = process.env.PORT || 8080;
-const db = require("./db.js");
+const db = require("./db");
 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use(express.static("public"));
+
+app.get("/notes", function(req, res){
+    res.sendFile(path.join(__dirname,"../NoteTaker/public/notes.html"));
+});
 
 app.get("/", function(req, res){
-    res.send("Welcome to my notes");
+    res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
 app.get("/api/notes", async function(req, res){
@@ -24,15 +30,13 @@ app.post("/api/notes", async function(req, res){
 
 app.delete("/api/notes/:id", async function(req, res){
     const { id } = req.params;
-    await db.deleteNotes(id);
+    await db.deleteNote(id);
     res.send("added a new note");
 });
 
 
 app.listen(PORT, () => console.log(`App listening on http://localhost:${PORT}`))
 
-
-// app.use(express.static("public"));
 
 // app.get("/assets/css/styles.css", function(req, res){
 //     res.sendFile(__dirname + "/public/assets/css/styles.css");

@@ -8,8 +8,8 @@ db.read().then(function(notes) {
 console.log(uuid());
 
 
-readFile("db/db.json", "utf8").then(data => {
+readFile("db.json", "utf8").then(data => {
     const db = JSON.parse(data);
     data.push("hello");
-    return writeFile("db/db.json", JSON.stringify(db))
+    return writeFile("db.json", JSON.stringify(db))
 }) .catch(err => console.log(err));

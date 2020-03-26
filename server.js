@@ -10,13 +10,14 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static("public"));
 
-app.get("/notes", function(req, res){
-    res.sendFile(path.join(__dirname,"/notes.html"));
+app.get("/", function(req, res){
+    res.sendFile(path.join(__dirname, "/public/index.html"));
 });
 
-app.get("/", function(req, res){
-    res.sendFile(path.join(__dirname, "../public/index.html"));
+app.get("/notes", function(req, res){
+    res.sendFile(path.join(__dirname,"/public/notes.html"));
 });
+
 
 app.get("/api/notes", async function(req, res){
     res.json(await db.getNotes());

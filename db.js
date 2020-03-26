@@ -21,10 +21,13 @@ const db = {
     deleteNote: async function(id){
         const db = await this.getNotes();
         // const new = [];
+        console.log(db);
         for(let i = 0; i < db.length; i++){
             if(db[i].id === id) return;
             db.push(db[i])
         }
+        // breakdown for loop
+        // try using filer - go through notes and will remove from list note with matching id
     }
 };
 

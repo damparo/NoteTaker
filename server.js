@@ -34,8 +34,7 @@ app.delete("/api/notes/:id", async function(req, res){
 
     const { id } = req.params;
     await db.deleteNote(id);
-    
-    res.send("added a new note");
+    res.send("Added a new note");
 });
 
 

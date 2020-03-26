@@ -23,23 +23,14 @@ const db = {
         const newDB = [];
         // console.log(db);
         for(let i = 0; i < db.length; i++){
-            if(db[i].id !== id) return;
-
-            newDB.push(db[i])
-            
+            if(db[i].id === id) return;
+            newDB.push(db[i]);
             return writeFile("db.json", JSON.stringify(newDB));
-
         }
-
-
-
-    
         // breakdown for loop
         // try using filer - go through notes and will remove from list note with matching id
     }
 };
-
-
 
 
 module.exports = db;

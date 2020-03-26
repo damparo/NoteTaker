@@ -8,7 +8,7 @@ The goal of this assignment was to create a note taker application that could be
 
 The note taker uses express backend to save and retrieve data from a JSON file.  This was done by using api routes that could return saved notes, recieve a new note, or delete existing ones.
 
-Heroku link [here](https://damparo.github.io/Day-Planner/)
+Heroku link [here](https://mysterious-beach-09502.herokuapp.com/)
 
 ## Thoughts:
 
